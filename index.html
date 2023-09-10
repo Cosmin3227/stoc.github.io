@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .product {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .product:hover {
+            background-color: #f0f0f0;
+        }
+
+        .product-name {
+            flex: 1;
+            padding-left: 10px;
+            font-weight: 600;
+            letter-spacing: .3px;
+        }
+
+        .product-quantity {
+            font-weight: bold;
+            padding-right: 10px;
+        }
+
+        .product-details {
+            display: none;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+        .product-details input {
+            width: 100%;
+            padding: 5px;
+            border: none;
+            outline: none;
+            background-color: #f0f0f0; /* culoarea de fundal a câmpului */
+            border-radius: 0; /* eliminarea border-radius */
+            color: #333; /* culoarea textului în câmp */
+        }
+
+        .product:not(:last-child) {
+            margin-bottom: 5px;
+        }
+
+        #total-quantity {
+            background-color: #fff;
+            padding: 10px;
+            text-align: right;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="product">
+            <div class="product-name">Cafea</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Ceai</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Ciocolata calda</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Apa</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Energizant</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Pepsi</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Mirinda</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Seven Up</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Evervest</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Prigat</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Beck's</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Stella Artois</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Jameson</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Absolut</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Havana</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Beefeater</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Martell</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Jacob's Creek</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Campari</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Aperol</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Jagermeister</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Absolut Elyx</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Beluga Noble</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Proper</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Cotnari Vin</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Mix Alune</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Tigari</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Grey Goose</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Hendrick's</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Bumbu Original</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Chivas Regal</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Hennessy</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Moet & Chandon</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Red Bull</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Corona</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        <div class="product">
+            <div class="product-name">Fumz</div>
+            <div class="product-quantity">0</div>
+        </div>
+        <div class="product-details">
+            <input type="number" placeholder="Introduceți cantitatea" oninput="updateQuantity(this)">
+        </div>
+        
+     
+    
+    
+   
+    <!-- Continuați cu celelalte produse aici -->
+    <div id="total-quantity">Total: 0</div>
+</div>
+
+<script>
+    const products = document.querySelectorAll('.product');
+    const totalQuantityDisplay = document.getElementById('total-quantity');
+
+    let totalQuantity = 0;
+
+    products.forEach((product, index) => {
+        product.addEventListener('click', () => {
+            const details = product.nextElementSibling;
+            details.style.display = details.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+
+    function updateQuantity(input) {
+        const inputValue = input.value;
+        const product = input.parentElement.previousElementSibling;
+        const productQuantity = product.querySelector('.product-quantity');
+
+        try {
+            // Evaluează expresia introdusă și actualizează cantitatea produsului
+            const result = eval(inputValue);
+            if (!isNaN(result)) {
+                productQuantity.textContent = result;
+            } else {
+                productQuantity.textContent = 'Eroare';
+            }
+        } catch (error) {
+            productQuantity.textContent = 'Eroare';
+        }
+
+        // Actualizează totalul cantităților
+        totalQuantity = 0;
+        products.forEach((product) => {
+            const quantity = parseFloat(product.querySelector('.product-quantity').textContent) || 0;
+            totalQuantity += quantity;
+        });
+        totalQuantityDisplay.textContent = `Total: ${totalQuantity}`;
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
